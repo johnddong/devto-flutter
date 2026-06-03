@@ -1,18 +1,17 @@
-# devto_blog
+# DevTo Flutter
 
-A new Flutter project.
+A cross-platform Dev.to reader built with Flutter.
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+- Browse trending and latest Dev.to articles
+- View article details and metadata
+- Explore articles grouped by authors
+- Clean and responsive mobile UI
+- Cross-platform support with Flutter
 
-A few resources to get you started if this is your first Flutter project:
+## Tech Stack
 
-- [Learn Flutter](https://docs.flutter.dev/get-started/learn-flutter)
-- [Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Flutter learning resources](https://docs.flutter.dev/reference/learning-resources)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
-# devto-flutter
+- Flutter
+- Dart
+- Dev.to API
