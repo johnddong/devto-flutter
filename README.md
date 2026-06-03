@@ -4,8 +4,8 @@ A cross-platform Dev.to reader built with Flutter.
 
 ## Screenshots
 
-| Feed | Article | Author profile |
-| --- | --- | --- |
+| Feed                               | Article                                  | Author profile                                  |
+| ---------------------------------- | ---------------------------------------- | ----------------------------------------------- |
 | ![Feed](docs/screenshots/feed.png) | ![Article](docs/screenshots/article.png) | ![Author profile](docs/screenshots/profile.png) |
 
 - **Feed** — Browse articles with Relevant, Latest, and Top tabs, cover images, tags, and engagement counts.
@@ -25,11 +25,3 @@ A cross-platform Dev.to reader built with Flutter.
 - Flutter
 - Dart
 - Dev.to API
-
-## Getting Started
-
-```bash
-cd v2/devto_blog
-flutter pub get
-flutter run
-```
