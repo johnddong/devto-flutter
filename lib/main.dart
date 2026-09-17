@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
 import 'screens/home_screen.dart';
+import 'theme/theme_controller.dart';
 
-void main() {
+final themeController = ThemeController();
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await themeController.load();
   runApp(const MyApp());
 }
 
@@ -10,13 +15,23 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: '科技情報',
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.lightBlueAccent),
+    return ValueListenableBuilder<ThemeMode>(
+      valueListenable: themeController,
+      builder: (context, mode, _) => MaterialApp(
+        title: '科技情報',
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(
+          colorScheme: ColorScheme.fromSeed(seedColor: Colors.lightBlueAccent),
+        ),
+        darkTheme: ThemeData(
+          colorScheme: ColorScheme.fromSeed(
+            seedColor: Colors.lightBlueAccent,
+            brightness: Brightness.dark,
+          ),
+        ),
+        themeMode: mode,
+        home: HomeScreen(),
       ),
-      home: HomeScreen(),
     );
   }
 }

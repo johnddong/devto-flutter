@@ -4,6 +4,7 @@ import 'package:devto_blog/widgets/article_item.dart';
 import 'package:devto_blog/widgets/article_item_shimmer.dart';
 import 'package:flutter/material.dart';
 import 'package:devto_blog/services/devto_api.dart';
+import 'package:devto_blog/main.dart' show themeController;
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -24,6 +25,19 @@ class HomeScreen extends StatelessWidget {
               Tab(text: 'Top'),
             ],
           ),
+          actions: [
+            ValueListenableBuilder<ThemeMode>(
+              valueListenable: themeController,
+              builder: (context, mode, _) {
+                final isDark = Theme.of(context).brightness == Brightness.dark;
+                return IconButton(
+                  icon: Icon(isDark ? Icons.dark_mode : Icons.light_mode),
+                  tooltip: 'Toogle Theme',
+                  onPressed: themeController.toggleThemeMode,
+                );
+              },
+            ),
+          ],
         ),
         body: const TabBarView(
           children: [
