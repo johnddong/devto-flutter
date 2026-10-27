@@ -37,9 +37,18 @@ class ArticleItem extends StatelessWidget {
                   // author & stats row
                   ArticleAuthorRow(article: article),
                   SizedBox(height: 12),
-                  // title
-                  _Title(title: article.title),
-                  SizedBox(height: 6),
+                  // title + bookmark icon
+                  Row(
+                    children: [
+                      Expanded(child: _Title(title: article.title)),
+                      IconButton(
+                        padding: EdgeInsets.zero,
+                        visualDensity: VisualDensity.compact,
+                        onPressed: () {},
+                        icon: Icon(Icons.bookmark_border),
+                      ),
+                    ],
+                  ),
                   // description
                   if (article.description.isNotEmpty)
                     Text(
