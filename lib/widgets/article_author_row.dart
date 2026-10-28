@@ -3,9 +3,14 @@ import 'package:devto_blog/widgets/sheets/user_profile_sheet.dart';
 import 'package:flutter/material.dart';
 
 class ArticleAuthorRow extends StatelessWidget {
-  const ArticleAuthorRow({super.key, required this.article});
+  const ArticleAuthorRow({
+    super.key,
+    required this.article,
+    this.onCommentsTap,
+  });
 
   final Article article;
+  final VoidCallback? onCommentsTap;
 
   @override
   Widget build(BuildContext context) {
@@ -48,6 +53,7 @@ class ArticleAuthorRow extends StatelessWidget {
         _Stats(
           reactions: article.publicReactionsCount,
           comments: article.commentsCount,
+          onCommentsTap: onCommentsTap,
         ),
       ],
     );
@@ -56,10 +62,15 @@ class ArticleAuthorRow extends StatelessWidget {
 
 // stats
 class _Stats extends StatelessWidget {
-  const _Stats({required this.reactions, required this.comments});
+  const _Stats({
+    required this.reactions,
+    required this.comments,
+    this.onCommentsTap,
+  });
 
   final int reactions;
   final int comments;
+  final VoidCallback? onCommentsTap;
 
   @override
   Widget build(BuildContext context) {
@@ -69,9 +80,16 @@ class _Stats extends StatelessWidget {
         const SizedBox(width: 4),
         Text('$reactions'),
         const SizedBox(width: 16),
-        const Icon(Icons.mode_comment_outlined, size: 16),
-        const SizedBox(width: 4),
-        Text('$comments'),
+        InkWell(
+          onTap: onCommentsTap,
+          child: Row(
+            children: [
+              Icon(Icons.mode_comment_outlined, size: 16),
+              const SizedBox(width: 4),
+              Text('$comments'),
+            ],
+          ),
+        ),
       ],
     );
   }

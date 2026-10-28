@@ -1,4 +1,5 @@
 import 'package:devto_blog/models/article.dart';
+import 'package:devto_blog/models/comment.dart';
 import 'package:devto_blog/models/user_profile.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
@@ -96,6 +97,27 @@ class DevToApi {
     final UserProfile userProfile = UserProfile.fromJson(data);
 
     return userProfile;
+  }
+
+  // get comments by article id
+  Future<List<Comment>> fetchCommentsById(int articleId) async {
+    final response = await http.get(
+      Uri.https(_host, 'api/comments', {'a_id': '$articleId'}),
+    );
+
+    if (response.statusCode != 200) {
+      throw Exception(
+        'Failed to load comments by article id: ${response.statusCode}',
+      );
+    }
+
+    final List<dynamic> data = json.decode(response.body);
+
+    final List<Comment> comments = data
+        .map((comment) => Comment.fromJson(comment as Map<String, dynamic>))
+        .toList();
+
+    return comments;
   }
 
   // get articles by username

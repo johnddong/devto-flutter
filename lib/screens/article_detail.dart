@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_markdown_plus/flutter_markdown_plus.dart';
 import 'package:shimmer/shimmer.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:devto_blog/widgets/sheets/comment_sheet.dart';
 
 class ArticleDetailScreen extends StatefulWidget {
   const ArticleDetailScreen({super.key, required this.article});
@@ -118,8 +119,15 @@ class _ArticleDetailScreenState extends State<ArticleDetailScreen> {
                             ),
                       ),
                       const SizedBox(height: 12),
-                      // author & stats row
-                      ArticleAuthorRow(article: article),
+                      // author & stats row (favorite & comments)
+                      ArticleAuthorRow(
+                        article: article,
+                        onCommentsTap: () => CommentsSheet.open(
+                          context,
+                          articleId: article.id,
+                          commentsCount: article.commentsCount,
+                        ),
+                      ),
                       const SizedBox(height: 12),
                       // tags row
                       ArticleTagsRow(tags: article.tagList),
